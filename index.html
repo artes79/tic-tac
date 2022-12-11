@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="robots" content="noindex">
+
+    <script type="text/javascript">
+
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'interactive') {
+                tictac.setup();
+            }
+        });
+
+        class tictac {
+
+            static setup() {
+                var div = document.getElementById("content-container");
+                div.innerHTML = "Test";
+
+                fetch('https://apitictac.t79.app/', {
+                    method: 'Post',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ 'name': 'Terje'})
+                })
+                    .then(function (response) {
+                        console.log('Response: ' + response.status);
+
+                        div.innerHTML = response.status;
+
+                    })
+            }
+
+        }
+
+
+    </script>
+
+    <title>Tic Tac</title>
+
+</head>
+
+<body>
+
+    <div id="content-container">
+
+
+    </div>
+
+
+</body>
+
+</html>
