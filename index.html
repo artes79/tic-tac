@@ -24,13 +24,14 @@
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({ 'name': 'Terje'})
+                    body: JSON.stringify({ 'name': 'Terje' })
                 })
-                    .then(function (response) {
-                        console.log('Response: ' + response.status);
-
-                        div.innerHTML = response.status;
-
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Server says: ' + data);
+                    })
+                    .catch((error) => {
+                        console.error('Error', error);
                     })
             }
 
