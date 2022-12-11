@@ -167,6 +167,10 @@
                 }
             }
 
+            static getBoard() {
+                tictac.submit({ 'player': '' })
+            }
+
             static submit(data) {
 
                 fetch('https://apitictac.t79.app/', {
@@ -178,7 +182,19 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        div.innerHTML = data['board'];
+                        
+                        console.log(data)
+
+                        this.bA0.setAttribute('value', data['board']['A']['0'])
+                        this.bA1.setAttribute('value', data['board']['A']['1'])
+                        this.bA2.setAttribute('value', data['board']['A']['2'])
+                        this.bB0.setAttribute('value', data['board']['B']['0'])
+                        this.bB1.setAttribute('value', data['board']['B']['1'])
+                        this.bB2.setAttribute('value', data['board']['B']['2'])
+                        this.bC0.setAttribute('value', data['board']['C']['0'])
+                        this.bC1.setAttribute('value', data['board']['C']['1'])
+                        this.bC2.setAttribute('value', data['board']['C']['2'])
+
                     })
                     .catch((error) => {
                         console.error('Error', error);

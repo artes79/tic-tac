@@ -24,20 +24,20 @@ bucketName = "tictac.t79.app"
 
 def lambda_handler(event, context):
     
+    data = json.loads(event['body'])
+    
     s3Client = boto3.client('s3')
-    
-    j = json.loads(event['body'])
-    
-    print(j['move'])
-    
     try:
         fileRes = s3Client.get_object(Bucket=bucketName, Key='tictac.json')
         file = json.loads(fileRes['Body'].read().decode('utf-8'))
-        print(file)
         
-        file['board'][j['move']['x']][j['move']['y']] = j['player']
-        
-        s3Client.put_object(Bucket=bucketName, Key='tictac.json', Body=bytes(json.dumps(file).encode('UTF-8')))
+        if data['player'] is not '':
+            file['board'][data['move']['x']][data['move']['y']] = data['player']
+            if data['player'] is 'X':
+                file['next-player'] = 'O'
+            else:
+                file['next-player'] = 'X'
+            s3Client.put_object(Bucket=bucketName, Key='tictac.json', Body=bytes(json.dumps(file).encode('UTF-8')))
         
     except Exception as e:
         raise e
