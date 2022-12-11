@@ -6,7 +6,6 @@
     <meta name="robots" content="noindex">
 
     <style>
-
         html {
             width: 100vw;
             height: 100vh;
@@ -17,23 +16,59 @@
             flex-wrap: column nowrap;
             align-items: center;
             justify-content: center;
+            font-family: Helvetica, Arial, sans-serif;
         }
 
-        form {
+        #gameboard {
             width: 32rem;
             display: grid;
             gap: 1rem;
             grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 1rem;
         }
 
         input {
-            width: 10rem;
-            min-height: 10rem;
-            border: none;
             text-align: center;
             text-decoration: none;
+        }
+
+        #gameboard input {
+            width: 10rem;
+            min-height: 10rem;
             font-size: 8rem;
-            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            background-color: aliceblue;
+        }
+
+        #gameboard input:hover[available=true] {
+            background-color: white;
+            border: 0.1rem solid lightblue;
+            cursor: pointer;
+        }
+
+        #control {
+            width: 100%;
+            display: flex;
+            flex-wrap: column nowrap;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        #control input {
+            width: 80%;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border: 0.2rem solid black;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        #info {
+            width: 100%;
+            text-align: center;
+            font-size: 1.8rem;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
         }
 
     </style>
@@ -48,14 +83,14 @@
 
         class tictac {
 
-            static bA0; 
-            static bA1; 
+            static bA0;
+            static bA1;
             static bA2;
-            static bB0; 
-            static bB1; 
+            static bB0;
+            static bB1;
             static bB2;
-            static bC0; 
-            static bC1; 
+            static bC0;
+            static bC1;
             static bC2;
 
             static click(id) {
@@ -81,7 +116,7 @@
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({ 
+                    body: JSON.stringify({
                         'player': 'X',
                         'move': '',
                     })
@@ -109,15 +144,26 @@
     <div id="content-container">
 
         <form>
-            <input id="A0" type="button" value="" onclick="tictac.click('A0')">
-            <input id="A1" type="button" value="" onclick="tictac.click('A1')">
-            <input id="A2" type="button" value="" onclick="tictac.click('A2')">
-            <input id="B0" type="button" value="" onclick="tictac.click('B0')">
-            <input id="B1" type="button" value="" onclick="tictac.click('B1')">
-            <input id="B2" type="button" value="" onclick="tictac.click('B2')">
-            <input id="C1" type="button" value="" onclick="tictac.click('C0')">
-            <input id="C2" type="button" value="" onclick="tictac.click('C1')">
-            <input id="C3" type="button" value="" onclick="tictac.click('C2')">
+
+            <div id="gameboard">
+                <input id="A0" available="true" type="button" value="" onclick="tictac.click('A0')">
+                <input id="A1" available="true" type="button" value="" onclick="tictac.click('A1')">
+                <input id="A2" available="true" type="button" value="" onclick="tictac.click('A2')">
+                <input id="B0" available="true" type="button" value="" onclick="tictac.click('B0')">
+                <input id="B1" available="true" type="button" value="" onclick="tictac.click('B1')">
+                <input id="B2" available="true" type="button" value="" onclick="tictac.click('B2')">
+                <input id="C1" available="true" type="button" value="" onclick="tictac.click('C0')">
+                <input id="C2" available="true" type="button" value="" onclick="tictac.click('C1')">
+                <input id="C3" available="true" type="button" value="" onclick="tictac.click('C2')">
+            </div>
+
+            <div id="info">
+                X's Turn
+            </div>
+
+            <div id="control">
+                <input id="get-board" type="button" value="Update Gameboard" onclick="tictac.getBoard()">
+            </div>
         </form>
 
         <div id="content-column">
