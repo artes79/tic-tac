@@ -43,12 +43,33 @@
 
         class tictac {
 
-            static click() {
+            static bA0; 
+            static bA1; 
+            static bA2;
+            static bB0; 
+            static bB1; 
+            static bB2;
+            static bC0; 
+            static bC1; 
+            static bC2;
 
+            static click(id) {
+                if (id == 'A0')
+                    this.bA0.setAttribute("value", "X");
+                if (id == "A1")
+                    this.bA1.setAttribute("value", "X");
             }
 
             static setup() {
-                var div = document.getElementById("content-column");
+                this.bA0 = document.getElementById("A0");
+                this.bA1 = document.getElementById("A1");
+                this.bA2 = document.getElementById("A2");
+                this.bB0 = document.getElementById("B0");
+                this.bB1 = document.getElementById("B1");
+                this.bB2 = document.getElementById("B2");
+                this.bC0 = document.getElementById("C0");
+                this.bC1 = document.getElementById("C1");
+                this.bC2 = document.getElementById("C2");
 
                 fetch('https://apitictac.t79.app/', {
                     method: 'Post',
@@ -83,15 +104,15 @@
     <div id="content-container">
 
         <form>
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
-            <input type="button" value="" onclick="tictac.click()">
+            <input id="A0" type="button" value="" onclick="tictac.click('A0')">
+            <input id="A1" type="button" value="" onclick="tictac.click('A1')">
+            <input id="A2" type="button" value="" onclick="tictac.click('A2')">
+            <input id="B0" type="button" value="" onclick="tictac.click('B0')">
+            <input id="B1" type="button" value="" onclick="tictac.click('B1')">
+            <input id="B2" type="button" value="" onclick="tictac.click('B2')">
+            <input id="C1" type="button" value="" onclick="tictac.click('C0')">
+            <input id="C2" type="button" value="" onclick="tictac.click('C1')">
+            <input id="C3" type="button" value="" onclick="tictac.click('C2')">
         </form>
 
         <div id="content-column">
