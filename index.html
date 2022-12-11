@@ -5,6 +5,34 @@
 
     <meta name="robots" content="noindex">
 
+    <style>
+
+        html {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            display: flex;
+            flex-wrap: column nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            width: 32rem;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        input[type=button] {
+            width: 10rem;
+            min-height: 10rem;
+        }
+
+    </style>
+
     <script type="text/javascript">
 
         document.addEventListener('readystatechange', function () {
@@ -15,9 +43,12 @@
 
         class tictac {
 
+            static click() {
+
+            }
+
             static setup() {
-                var div = document.getElementById("content-container");
-                div.innerHTML = "Test";
+                var div = document.getElementById("content-column");
 
                 fetch('https://apitictac.t79.app/', {
                     method: 'Post',
@@ -51,8 +82,24 @@
 
     <div id="content-container">
 
+        <form>
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+            <input type="button" value="" onclick="tictac.click()">
+        </form>
+
+        <div id="content-column">
+
+        </div>
 
     </div>
+
 
 
 </body>
