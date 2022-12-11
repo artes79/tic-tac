@@ -96,7 +96,7 @@
                 if (id == 'A0') {
                     this.bA0.setAttribute("value", "X");
                     this.bA0.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'A', 'y': '0' }
                     })
@@ -104,7 +104,7 @@
                 if (id == "A1") {
                     this.bA1.setAttribute("value", "X");
                     this.bA1.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'A', 'y': '1' }
                     })
@@ -112,7 +112,7 @@
                 if (id == "A2") {
                     this.bA2.setAttribute("value", "X");
                     this.bA2.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'A', 'y': '2' }
                     })
@@ -120,7 +120,7 @@
                 if (id == 'B0') {
                     this.bB0.setAttribute("value", "X");
                     this.bB0.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'B', 'y': '0' }
                     })
@@ -128,7 +128,7 @@
                 if (id == "B1") {
                     this.bB1.setAttribute("value", "X");
                     this.bB1.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'B', 'y': '1' }
                     })
@@ -136,7 +136,7 @@
                 if (id == "B2") {
                     this.bB2.setAttribute("value", "X");
                     this.bB2.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'B', 'y': '2' }
                     })
@@ -144,7 +144,7 @@
                 if (id == 'C0') {
                     this.bC0.setAttribute("value", "X");
                     this.bC0.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'C', 'y': '0' }
                     })
@@ -152,7 +152,7 @@
                 if (id == "C1") {
                     this.bC1.setAttribute("value", "X");
                     this.bC1.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'C', 'y': '1' }
                     })
@@ -160,7 +160,7 @@
                 if (id == "C2") {
                     this.bC2.setAttribute("value", "X");
                     this.bC2.setAttribute("available", "false");
-                    submit({
+                    tictac.submit({
                         'player': 'X',
                         'move': { 'x': 'C', 'y': '2' }
                     })
@@ -195,24 +195,6 @@
                 this.bC0 = document.getElementById("C0");
                 this.bC1 = document.getElementById("C1");
                 this.bC2 = document.getElementById("C2");
-
-                fetch('https://apitictac.t79.app/', {
-                    method: 'Post',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'player': 'X',
-                        'move': '',
-                    })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        div.innerHTML = data['board'];
-                    })
-                    .catch((error) => {
-                        console.error('Error', error);
-                    })
             }
 
         }

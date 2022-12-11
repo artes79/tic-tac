@@ -24,16 +24,18 @@ bucketName = "tictac.t79.app"
 
 def lambda_handler(event, context):
     
-    data = { 'player': 'X', 'board': '0 0 0 0 0 0 0 0 0' }
-    
     s3Client = boto3.client('s3')
+    
+    j = json.loads(event['body'])
+    
+    print(j['move'])
     
     try:
         fileRes = s3Client.get_object(Bucket=bucketName, Key='tictac.json')
         file = json.loads(fileRes['Body'].read().decode('utf-8'))
         print(file)
         
-        file['Test'] = "Dette er en test"
+        file['board'][j['move']['x']][j['move']['y']] = j['player']
         
         s3Client.put_object(Bucket=bucketName, Key='tictac.json', Body=bytes(json.dumps(file).encode('UTF-8')))
         
