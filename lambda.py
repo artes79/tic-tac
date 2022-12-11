@@ -33,6 +33,10 @@ def lambda_handler(event, context):
         file = json.loads(fileRes['Body'].read().decode('utf-8'))
         print(file)
         
+        file['Test'] = "Dette er en test"
+        
+        s3Client.put_object(Bucket=bucketName, Key='tictac.json', Body=bytes(json.dumps(file).encode('UTF-8')))
+        
     except Exception as e:
         raise e
     
