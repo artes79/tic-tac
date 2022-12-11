@@ -6,9 +6,11 @@ HEADERS = {
 }
 
 def lambda_handler(event, context):
-    # TODO implement
+    
+    data = { 'player': 'X', 'board': '0 0 0 0 0 0 0 0 0' }
+    
     return {
         'statusCode': 200,
         'headers': HEADERS,
-        'body': json.dumps('Hello from Lambda!')
+        'body': json.dumps(data)
     }

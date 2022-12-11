@@ -24,11 +24,14 @@
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({ 'name': 'Terje' })
+                    body: JSON.stringify({ 
+                        'player': 'X',
+                        'move': '',
+                    })
                 })
                     .then(response => response.json())
                     .then(data => {
-                        alert('Server says: ' + data);
+                        div.innerHTML = data['board'];
                     })
                     .catch((error) => {
                         console.error('Error', error);
